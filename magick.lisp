@@ -108,7 +108,9 @@
 (defmagickfun "MagickHasPreviousImage" :boolean ((wand magick-wand)))
 (defmagickfun "MagickNextImage"        :boolean ((wand magick-wand)))
 (defmagickfun "MagickPreviousImage"    :boolean ((wand magick-wand)))
-
+(defmagickfun "MagickGetIteratorIndex" :uint    ((wand magick-wand)))
+(defmagickfun "MagickSetIteratorIndex" :void    ((wand magick-wand)
+                                                 (index :uint)))
 
 ;; Attributes
 
@@ -500,6 +502,15 @@
   :check-error wand)
 (defmagickfun "MagickWhiteThresholdImage" :boolean
   ((wand magick-wand) (threshold pixel-wand))
+  :check-error wand)
+(defmagickfun "MagickAppendImages" magick-wand
+  ((wand magick-wand) (stack :boolean))
+  :check-error wand)
+(defmagickfun "MagickAdaptiveResizeImage" :boolean
+  ((wand magick-wand) (columns :ulong) (rows :ulong))
+  :check-error wand)
+(defmagickfun "MagickThumbnailImage" :boolean
+  ((wand magick-wand) (columns :ulong) (rows :ulong))
   :check-error wand)
 
 
